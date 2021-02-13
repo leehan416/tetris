@@ -11,6 +11,7 @@ public class main {
 
 	public static void main(String[] args) {
 		for (;;) {
+			
 			print();
 			//ToDoList : 프레임 단위 만들것.
 		}
