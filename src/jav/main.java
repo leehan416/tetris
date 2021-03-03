@@ -7,28 +7,48 @@ public class main {
 				if (DataBase.instance.slot[h][w] > 0) {
 					System.out.print("бс");
 				} else if (DataBase.instance.slot[h][w] == 0) {
-
 					System.out.print("бр");
 				}
-
-				// System.out.print(DataBase.instance.slot[h][w]);
 			}
+				System.out.println("");
+			
 		}
-		System.out.println("\n");
+		System.out.println("");
 	}
 
 	public static void main(String[] args) {
 		Function.instance.ZeroSet();
+		
+		Function.instance.BlockSet(1,4,0);
+		
+		
 		for (;;) {
-			if (DataBase.instance.roof > 10) {
+			
+			if (DataBase.instance.roof > 10) { // test
 				break;
 			}
 			print();
+			
+			
+			
+			
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			Function.instance.Down();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			DataBase.instance.roof++;
 		}
 	}

@@ -11,7 +11,6 @@ public class Function {
 
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
-
 				DataBase.instance.slot[y][x] = 0;
 
 			}
@@ -79,6 +78,21 @@ public class Function {
 			DataBase.instance.slot[y + 1][x + 1] = 1;
 			DataBase.instance.slot[y + 2][x + 1] = 1;
 			break;
+		}
+	}
+
+	public void Down() {
+		for (int x = 0; x < 10; x++) {
+			for (int y = 0; y < 10; y++) {
+				if (DataBase.instance.slot[y][x] <= 1) {
+					//try {
+						DataBase.instance.slot[y][x]--;
+						DataBase.instance.slot[y + 1][x]++;
+					//} catch (Exception e) {
+						// Ãæµ¹
+					//}
+				}
+			}
 		}
 	}
 
