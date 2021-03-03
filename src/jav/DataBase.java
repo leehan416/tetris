@@ -5,7 +5,7 @@ public class DataBase {
 	public int val; // 현재 블럭 모양
 	public int x; // 현재 x 좌표
 	public int y; // 현재 y 좌표 
-	
+	public int angle; // 각도
 	public DataBase() {
 		instance = this;
 	}

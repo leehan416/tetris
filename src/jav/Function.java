@@ -32,23 +32,48 @@ public class Function {
 	}
 
 	public void BlockSet(int val, int x, int y) { // 블럭 세팅하는 함수
-		//ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
+		// ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
 		switch (val) {
 		case 0: // ㅣ 자 블럭
-			DataBase.instance.slot[y][x] = 1;
-			DataBase.instance.slot[y + 1][x] = 1;
-			DataBase.instance.slot[y + 2][x] = 1;
-			DataBase.instance.slot[y + 3][x] = 1;
-
+			if (DataBase.instance.angle & 2 == 1) { // 0 or 90
+				DataBase.instance.slot[y - 2][x] = 1;
+				DataBase.instance.slot[y - 1][x] = 1;
+				DataBase.instance.slot[y][x] = 1;
+				DataBase.instance.slot[y + 1][x] = 1;
+			} else {
+				DataBase.instance.slot[y][x + 1] = 1;
+				DataBase.instance.slot[y][x + 2] = 1;
+				DataBase.instance.slot[y][x] = 1;
+				DataBase.instance.slot[y][x - 1] = 1;
+			}
 			break;
 		case 1: // ㅁ 자 블럭
 			DataBase.instance.slot[y][x] = 1;
 			DataBase.instance.slot[y][x + 1] = 1;
 			DataBase.instance.slot[y + 1][x] = 1;
 			DataBase.instance.slot[y + 1][x + 1] = 1;
-
 			break;
 		case 2: // ㄱ 자 블럭
+			switch (angle) {
+			case 0:
+				DataBase.instance.slot[y][x-3] = 1;
+				DataBase.instance.slot[y][x -2] = 1;
+				DataBase.instance.slot[y + 1][x] = 1;
+				DataBase.instance.slot[y][x + 2] = 1;
+				break;
+			case 1:
+				DataBase.instance.slot[y][x] = 1;
+				DataBase.instance.slot[y][x + 1] = 1;
+				DataBase.instance.slot[y + 1][x] = 1;
+				DataBase.instance.slot[y][x + 2] = 1;
+				break;
+			case 2:
+
+				break;
+			case 3:
+
+				break;
+			}
 			DataBase.instance.slot[y][x] = 1;
 			DataBase.instance.slot[y][x + 1] = 1;
 			DataBase.instance.slot[y][x + 2] = 1;
@@ -67,6 +92,7 @@ public class Function {
 			DataBase.instance.slot[y + 2][x + 1] = 1;
 			break;
 		}
+
 	}
 
 	public void Down() {
@@ -78,7 +104,6 @@ public class Function {
 			OnEnter();
 			return;
 		}
-	}
 
 	public void OnEnter() { // 충돌(접촉)시
 		DataBase.instance.x = 4;
