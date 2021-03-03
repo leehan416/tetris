@@ -12,7 +12,6 @@ public class Function {
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				DataBase.instance.slot[y][x] = 0;
-
 			}
 		}
 	}
@@ -30,21 +29,10 @@ public class Function {
 				}
 			}
 		}
-
-	}
-
-	public void BlockMoveDel() { // 이동을 위해 지움
-		for (int y = 0;; y++) {
-			for (int x = 0;; x++) {
-				if (DataBase.instance.slot[y][x] == 1) {
-
-					DataBase.instance.slot[y][x] = 0;
-				}
-			}
-		}
 	}
 
 	public void BlockSet(int val, int x, int y) { // 블럭 세팅하는 함수
+		//ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
 		switch (val) {
 		case 0: // ㅣ 자 블럭
 			DataBase.instance.slot[y][x] = 1;
@@ -82,21 +70,19 @@ public class Function {
 	}
 
 	public void Down() {
-		for (int x = 0; x < 10; x++) {
-			for (int y = 0; y < 10; y++) {
-				if (DataBase.instance.slot[y][x] <= 1) {
-					//try {
-						DataBase.instance.slot[y][x]--;
-						DataBase.instance.slot[y + 1][x]++;
-					//} catch (Exception e) {
-						// 충돌
-					//}
-				}
-			}
+		ZeroSet(); // 설치된 블럭은 제거 안하는 방향으로 변경할것
+		try {
+			BlockSet(DataBase.instance.val, DataBase.instance.x, ++DataBase.instance.y);
+		} catch (Exception e) {
+			BlockSet(DataBase.instance.val, DataBase.instance.x, --DataBase.instance.y);
+			OnEnter();
+			return;
 		}
 	}
 
 	public void OnEnter() { // 충돌(접촉)시
+		DataBase.instance.x = 4;
+		DataBase.instance.y = -1;
 
 	}
 }
