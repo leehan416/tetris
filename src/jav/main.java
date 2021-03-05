@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import sun.java2d.loops.DrawRect;
+
 public class main {
 
 	static void print() { // 출력 함수
@@ -22,6 +24,7 @@ public class main {
 				}
 			}
 			DataBase.instance.printData += "\n";
+			//System.out.println(DataBase.instance.printData);
 		}
 		DataBase.instance.printData += "\n";
 	}
@@ -32,16 +35,13 @@ public class main {
 
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// f.setLocationRelativeTo(null); // 1 //자동으로 화면 중앙에 배치
+		// f.setLocationRelativeTo(null); //자동으로 화면 중앙에 배치
 		f.setSize(500, 500);
 		f.setVisible(true);
 
 		JLabel label = new JLabel();
-		label.setBounds(0, 0, 500, 500);
-		f.remove(label);
-		label.setText(DataBase.instance.printData);
-		f.add(label);
-
+		label.setBounds(0, 0, 300, 50);
+		
 		class key implements KeyListener {
 
 			public void keyPressed(KeyEvent e) {
@@ -81,14 +81,23 @@ public class main {
 		f.setFocusable(true);
 
 		while (true) {
-			if (DataBase.instance.roof > 20) { // test
+		if (DataBase.instance.roof > 20) { // test
 				break;
 			}
-			print();
+			/*print();
 			f.remove(label);
 			label.setText(DataBase.instance.printData);
 			f.add(label);
-			try {
+			*/
+		
+	//	public void paint() {
+			
+			
+	//	}
+	//	DrawRect(0,0,1,1);
+		
+		
+		try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
