@@ -1,15 +1,8 @@
 package jav;
 
-import javax.swing.*;
-import java.awt.event.*;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-import sun.java2d.loops.DrawRect;
 
 public class main {
 
@@ -24,47 +17,44 @@ public class main {
 				}
 			}
 			DataBase.instance.printData += "\n";
-			//System.out.println(DataBase.instance.printData);
+			// System.out.println(DataBase.instance.printData);
 		}
 		DataBase.instance.printData += "\n";
 	}
 
+	public static JFrame frame = new JFrame("Tetris");
+
 	public static void main(String[] args) {
-		Function.instance.ZeroSet();
-		Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, DataBase.instance.y);
+		// Function.instance.ZeroSet();
+		// Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x,
+		// DataBase.instance.y);
 
-		JFrame f = new JFrame();
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// f.setLocationRelativeTo(null); //자동으로 화면 중앙에 배치
-		f.setSize(500, 500);
-		f.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// frame.setLocationRelativeTo(null); // 자동으로 화면 중앙에 배치
+		frame.setSize(1280, 720);
+		frame.setVisible(true);
+		// --------------------------------------------------
+		frame.getGraphics().drawRect(10, 40, 80, 80);
+		frame.getGraphics().drawRect(10, 40, 80, 80);
+		frame.getGraphics().drawString("무야호", 640, 360);
 
-		JLabel label = new JLabel();
-		label.setBounds(0, 0, 300, 50);
-		
+		// --------------------------------------------------
+
 		class key implements KeyListener {
 
 			public void keyPressed(KeyEvent e) {
 
-				if (e.getKeyCode() == 37) {
-					f.remove(label);
-					label.setText("왼족 누름");
-					f.add(label);
+				if (e.getKeyCode() == 37) {// 왼
+
 				}
-				if (e.getKeyCode() == 38) {
-					f.remove(label);
-					label.setText("위 누름");
-					f.add(label);
+				if (e.getKeyCode() == 38) { // 위
+
 				}
-				if (e.getKeyCode() == 39) {
-					f.remove(label);
-					label.setText("오른 누름");
-					f.add(label);
+				if (e.getKeyCode() == 39) { // 오룬
+
 				}
-				if (e.getKeyCode() == 40) {
-					f.add(label);
-					label.setText("아래 누름");
-					f.add(label);
+				if (e.getKeyCode() == 40) { // 아래1
+
 				}
 			}
 
@@ -76,34 +66,31 @@ public class main {
 
 		}
 
-		f.setVisible(true);
-		f.addKeyListener(new key());
-		f.setFocusable(true);
+		frame.setVisible(true);
+		frame.addKeyListener(new key());
+		frame.setFocusable(true);
 
 		while (true) {
-		if (DataBase.instance.roof > 20) { // test
+			if (DataBase.instance.roof > 20) { // test
 				break;
 			}
-			/*print();
-			f.remove(label);
-			label.setText(DataBase.instance.printData);
-			f.add(label);
-			*/
-		
-	//	public void paint() {
-			
-			
-	//	}
-	//	DrawRect(0,0,1,1);
-		
-		
-		try {
+			/*
+			 * print(); f.remove(label); label.setText(DataBase.instance.printData);
+			 * f.add(label);
+			 */
+
+			// public void paint() {
+
+			// }
+			// DrawRect(0,0,1,1);
+
+			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			Function.instance.Down();
-			DataBase.instance.roof++;
+			// Function.instance.Down();
+			// DataBase.instance.roof++;
 		}
 
 	}
