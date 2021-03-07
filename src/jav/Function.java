@@ -113,6 +113,5 @@ public class Function {
 	public void OnEnter() { // √Êµπ(¡¢√À)Ω√
 		DataBase.instance.x = 4;
 		DataBase.instance.y = -1;
-
 	}
 }

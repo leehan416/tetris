@@ -13,7 +13,6 @@ public class DataBase {
 	public DataBase() {
 		instance = this;
 	}
-
 	public int[][] slot = new int[10][10]; // 10,10 슬롯 생성
 	public int roof; // 현재 반복수
 

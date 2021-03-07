@@ -37,7 +37,6 @@ public class main {
 		frame.getGraphics().drawRect(10, 40, 80, 80);
 		frame.getGraphics().drawRect(10, 40, 80, 80);
 		frame.getGraphics().drawString("¹«¾ßÈ£", 640, 360);
-
 		// --------------------------------------------------
 
 		class key implements KeyListener {
