@@ -24,7 +24,6 @@ public class Function {
 					DataBase.instance.slot[y][x] = 0;
 			}
 		}
-
 	}
 
 	public void Check() { // 10개 모였는지 확인하는 함수
@@ -41,7 +40,6 @@ public class Function {
 			}
 		}
 	}
-
 	public void BlockSet(int val, int x, int y) { // 블럭 세팅하는 함수
 		// ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
 		switch (val) {

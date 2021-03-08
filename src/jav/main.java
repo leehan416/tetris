@@ -1,5 +1,7 @@
 package jav;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
@@ -7,36 +9,31 @@ import javax.swing.JFrame;
 public class main {
 
 	static void print() { // 출력 함수
-		DataBase.instance.printData = "";
+
+		frame.getGraphics().clearRect(0, 0, 500, 500);
+		// frame.setBackground(Color.blue);
 		for (int h = 0; h < DataBase.instance.slot.length; h++) {
 			for (int w = 0; w < DataBase.instance.slot.length; w++) {
 				if (DataBase.instance.slot[h][w] > 0) {
-					DataBase.instance.printData += "■";
+					frame.getGraphics().drawRect((w * 40) + 40, (h * 40) + 40, 40, 40);
+					frame.getGraphics().fillRect((w * 40) + 40, (h * 40) + 40, 40, 40);
 				} else if (DataBase.instance.slot[h][w] == 0) {
-					DataBase.instance.printData += "□";
+					frame.getGraphics().drawRect((w * 40) + 40, (h * 40) + 40, 40, 40);
 				}
 			}
-			DataBase.instance.printData += "\n";
-			// System.out.println(DataBase.instance.printData);
 		}
-		DataBase.instance.printData += "\n";
 	}
 
 	public static JFrame frame = new JFrame("Tetris");
 
 	public static void main(String[] args) {
-		// Function.instance.ZeroSet();
-		// Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x,
-		// DataBase.instance.y);
+		Function.instance.ZeroSet();
+		Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, DataBase.instance.y);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// frame.setLocationRelativeTo(null); // 자동으로 화면 중앙에 배치
-		frame.setSize(1280, 720);
+		frame.setSize(480, 480);
 		frame.setVisible(true);
-		// --------------------------------------------------
-		frame.getGraphics().drawRect(10, 40, 80, 80);
-		frame.getGraphics().drawRect(10, 40, 80, 80);
-		frame.getGraphics().drawString("무야호", 640, 360);
+
 		// --------------------------------------------------
 
 		class key implements KeyListener {
@@ -44,16 +41,41 @@ public class main {
 			public void keyPressed(KeyEvent e) {
 
 				if (e.getKeyCode() == 37) {// 왼
-
+					Function.instance.MovingDel();
+					try {
+						Function.instance.BlockSet(DataBase.instance.val, --DataBase.instance.x, DataBase.instance.y);
+					} catch (Exception E) {
+						// TODO: handle exception
+					}
+					print();
 				}
 				if (e.getKeyCode() == 38) { // 위
-
+					Function.instance.MovingDel();
+					try {
+						Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, DataBase.instance.y);
+					} catch (Exception E) {
+						// TODO: handle exception
+					}
+					print();
+					
 				}
 				if (e.getKeyCode() == 39) { // 오룬
-
+					Function.instance.MovingDel();
+					try {
+						Function.instance.BlockSet(DataBase.instance.val, ++DataBase.instance.x, DataBase.instance.y);
+					} catch (Exception E) {
+						// TODO: handle exception
+					}
+					print();
 				}
 				if (e.getKeyCode() == 40) { // 아래1
-
+					Function.instance.MovingDel();
+					try {
+						Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, ++DataBase.instance.y);
+					} catch (Exception E) {
+						// TODO: handle exception
+					}
+					print();
 				}
 			}
 
@@ -73,24 +95,14 @@ public class main {
 			if (DataBase.instance.roof > 20) { // test
 				break;
 			}
-			/*
-			 * print(); f.remove(label); label.setText(DataBase.instance.printData);
-			 * f.add(label);
-			 */
-
-			// public void paint() {
-
-			// }
-			// DrawRect(0,0,1,1);
-
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			// Function.instance.Down();
-			// DataBase.instance.roof++;
+			print();
+			Function.instance.Down();
+			DataBase.instance.roof++;
 		}
-
 	}
 }

@@ -7,13 +7,9 @@ public class DataBase {
 	public int y = 0; // 현재 y 좌표 
 	public int angle; // 각도
 	
-	
-	public String printData;
-	
 	public DataBase() {
 		instance = this;
 	}
 	public int[][] slot = new int[10][10]; // 10,10 슬롯 생성
 	public int roof; // 현재 반복수
-
 }
