@@ -4,7 +4,7 @@ public class DataBase {
 	public static DataBase instance = new DataBase();
 	public int val = 1; // 현재 블럭 모양
 	public int x = 4; // 현재 x 좌표
-	public int y = 0; // 현재 y 좌표 
+	public int y = 1; // 현재 y 좌표 
 	public int angle; // 각도
 	
 	public DataBase() {

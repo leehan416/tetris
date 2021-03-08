@@ -28,7 +28,7 @@ public class main {
 
 	public static void main(String[] args) {
 		Function.instance.ZeroSet();
-		Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, DataBase.instance.y);
+		Function.instance.BlockSet();
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(480, 480);
@@ -43,39 +43,45 @@ public class main {
 				if (e.getKeyCode() == 37) {// ¿Þ
 					Function.instance.MovingDel();
 					try {
-						Function.instance.BlockSet(DataBase.instance.val, --DataBase.instance.x, DataBase.instance.y);
+						--DataBase.instance.x;
+						Function.instance.BlockSet();
+						print();
 					} catch (Exception E) {
 						// TODO: handle exception
 					}
-					print();
+
 				}
 				if (e.getKeyCode() == 38) { // À§
 					Function.instance.MovingDel();
 					try {
-						Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, DataBase.instance.y);
+						Function.instance.BlockSet();
+						print();
 					} catch (Exception E) {
 						// TODO: handle exception
 					}
-					print();
-					
+
 				}
 				if (e.getKeyCode() == 39) { // ¿À·é
 					Function.instance.MovingDel();
 					try {
-						Function.instance.BlockSet(DataBase.instance.val, ++DataBase.instance.x, DataBase.instance.y);
+						++DataBase.instance.x;
+						Function.instance.BlockSet();
+						print();
 					} catch (Exception E) {
 						// TODO: handle exception
 					}
-					print();
+
 				}
 				if (e.getKeyCode() == 40) { // ¾Æ·¡1
 					Function.instance.MovingDel();
 					try {
-						Function.instance.BlockSet(DataBase.instance.val, DataBase.instance.x, ++DataBase.instance.y);
+						++DataBase.instance.y;
+						
+						Function.instance.BlockSet();
+						print();
 					} catch (Exception E) {
 						// TODO: handle exception
 					}
-					print();
 				}
 			}
 
@@ -102,7 +108,7 @@ public class main {
 			}
 			print();
 			Function.instance.Down();
-			DataBase.instance.roof++;
+			//DataBase.instance.roof++;
 		}
 	}
 }

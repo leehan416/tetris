@@ -17,7 +17,6 @@ public class Function {
 	}
 
 	public void MovingDel() {
-
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				if (DataBase.instance.slot[y][x] != 2)
@@ -33,35 +32,39 @@ public class Function {
 				if (DataBase.instance.slot[y][x] == 2)
 					sum++;
 			}
-			if (sum <= 18) {
+			if (sum <= 19) {
 				for (int x = 0; x > DataBase.instance.slot.length; x++) {
 					DataBase.instance.slot[y][x] = 0;
 				}
 			}
 		}
 	}
-	public void BlockSet(int val, int x, int y) { // 블럭 세팅하는 함수
+
+	int valu = 1; // 블록설치시 2로 변경하여 설치
+
+	public void BlockSet() { // 블럭 세팅하는 함수
 		// ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
-		switch (val) {
+
+		switch (DataBase.instance.val) {
 		case 0: { // ㅣ 자 블럭
 			if ((DataBase.instance.angle & 2) == 1) { // 0 or 180
-				DataBase.instance.slot[y - 2][x] = 1;
-				DataBase.instance.slot[y - 1][x] = 1;
-				DataBase.instance.slot[y][x] = 1;
-				DataBase.instance.slot[y + 1][x] = 1;
+				DataBase.instance.slot[DataBase.instance.y - 2][DataBase.instance.x] = valu;
+				DataBase.instance.slot[DataBase.instance.y - 1][DataBase.instance.x] = valu;
+				DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x] = valu;
+				DataBase.instance.slot[DataBase.instance.y + 1][DataBase.instance.x] = valu;
 			} else { // 90 or 270
-				DataBase.instance.slot[y][x + 1] = 1;
-				DataBase.instance.slot[y][x + 2] = 1;
-				DataBase.instance.slot[y][x] = 1;
-				DataBase.instance.slot[y][x - 1] = 1;
+				DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x + 1] = valu;
+				DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x + 2] = valu;
+				DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x] = valu;
+				DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x - 1] = valu;
 			}
 			break;
 		}
 		case 1: {// ㅁ 자 블럭
-			DataBase.instance.slot[y][x] = 1;
-			DataBase.instance.slot[y][x + 1] = 1;
-			DataBase.instance.slot[y + 1][x] = 1;
-			DataBase.instance.slot[y + 1][x + 1] = 1;
+			DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x] = valu;
+			DataBase.instance.slot[DataBase.instance.y][DataBase.instance.x + 1] = valu;
+			DataBase.instance.slot[DataBase.instance.y + 1][DataBase.instance.x] = valu;
+			DataBase.instance.slot[DataBase.instance.y + 1][DataBase.instance.x + 1] = valu;
 			break;
 		}
 		case 2: {// ㄱ 자 블럭
@@ -99,17 +102,35 @@ public class Function {
 	}
 
 	public void Down() {
-		MovingDel(); // 설치된 블럭은 제거 안하는 방향으로 변경할것
+		MovingDel(); 
 		try {
-			BlockSet(DataBase.instance.val, DataBase.instance.x, ++DataBase.instance.y);
+			try {
+				//TODO  벽돌충돌 만들어라
+			} catch (Exception e) {
+				
+			}
+			
+			
+			++DataBase.instance.y;
+
+			BlockSet();
 		} catch (Exception e) {
-			BlockSet(DataBase.instance.val, DataBase.instance.x, --DataBase.instance.y);
-			OnEnter();
+			try {
+				BlockSet();
+			} catch (Exception e2) {
+				OnEnter();
+			}
+
 		}
 	}
 
 	public void OnEnter() { // 충돌(접촉)시
+		--DataBase.instance.y;
+		valu++;
+		BlockSet();
+		valu--;	Check();
 		DataBase.instance.x = 4;
 		DataBase.instance.y = -1;
+	
 	}
 }
