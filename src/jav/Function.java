@@ -53,7 +53,7 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public static void Check() { // 10개 모였는지 확인, 한줄 제거, 블럭 밀기 하는 함수
+	public static void Check() { // 10개 모였 는지 확인, 한줄 제거, 블럭 밀기 하는 함수
 		for (int y = 0; y < 10; y++) {
 			int sum = 0;
 			for (int x = 0; x < 10; x++) {
@@ -84,7 +84,7 @@ public class Function { // 각종 함수 모음 클래스
 
 		switch (DataBase.val) {
 		case 0: { // ㅣ 자 블럭
-			if ((DataBase.angle & 2) == 1) { // 0 or 180
+			if ((DataBase.angle % 2) == 1) { // 0 or 180
 				DataBase.slot[DataBase.y - 2][DataBase.x] += valu;
 				DataBase.slot[DataBase.y - 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
