@@ -1,7 +1,7 @@
 package jav;
 
 public class DataBase { // 데이터 모음 클래스
-	public static int val = 1; // 현재 블럭 모양
+	public static int val = 0; // 현재 블럭 모양
 	public static int x = 4; // 현재 x 좌표
 	public static int y = 1; // 현재 y 좌표 
 	public static int angle; // 각도

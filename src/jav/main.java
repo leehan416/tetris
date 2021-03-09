@@ -24,8 +24,8 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 	public static JFrame frame = new JFrame("Tetris");
 
 	public static void main(String[] args) {
-		Function.instance.ZeroSet();
-		Function.instance.BlockSet();
+		Function.ZeroSet();
+		Function.BlockSet();
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(480, 480);
@@ -36,7 +36,7 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 		class key implements KeyListener { // 키입력
 
 			public void keyPressed(KeyEvent e) {
-				Function.instance.Move(e.getKeyCode());
+				Function.Move(e.getKeyCode());
 				print();
 			}
 
@@ -55,7 +55,7 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 				e.printStackTrace();
 			}
 			print();
-			Function.instance.Down();
+			Function.Down();
 		}
 	}
 }

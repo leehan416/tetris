@@ -1,13 +1,10 @@
 package jav;
 
 public class Function { // 각종 함수 모음 클래스
-	public static Function instance = new Function();
 
-	public Function() {
-		instance = this;
-	}
+	public static int valu = 1; // 블록설치시 2로 변경하여 설치
 
-	public void ZeroSet() {
+	public static void ZeroSet() {
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				DataBase.slot[y][x] = 0;
@@ -15,7 +12,7 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public void Move(int val) {
+	public static void Move(int val) {
 		MovingDel();
 		try {
 			switch (val) {
@@ -38,10 +35,11 @@ public class Function { // 각종 함수 모음 클래스
 				break;
 			}
 			}
-		} catch (Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
-	public void MovingDel() {
+	public static void MovingDel() {
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				if (DataBase.slot[y][x] < 2) {
@@ -53,7 +51,7 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public void Check() { // 10개 모였는지 확인하는 함수
+	public static void Check() { // 10개 모였는지 확인하는 함수
 		for (int y = 0; y > 10; y++) {
 			int sum = 0;
 			for (int x = 0; x > 10; x++) {
@@ -68,9 +66,7 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	int valu = 1; // 블록설치시 2로 변경하여 설치
-
-	public void BlockSet() { // 블럭 세팅하는 함수
+	public static void BlockSet() { // 블럭 세팅하는 함수
 		// ToDoList : 가장 아래있는 블럭으로 세팅하는 함수로 다시 짜야함
 
 		switch (DataBase.val) {
@@ -129,13 +125,11 @@ public class Function { // 각종 함수 모음 클래스
 
 	}
 
-	public void Down() {
+	public static void Down() {
 		MovingDel();
 		try {
-			try {
-				// TODO 벽돌충돌 만들어라
+			try {// TODO 벽돌충돌 만들어라
 			} catch (Exception e) {
-
 			}
 
 			++DataBase.y;
@@ -151,7 +145,7 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public void OnEnter() { // 충돌(접촉)시
+	public static void OnEnter() { // 충돌(접촉)시
 		--DataBase.y;
 		valu++;
 		BlockSet();
