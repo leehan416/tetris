@@ -6,19 +6,19 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
-public class main {
+public class main { // 구동에 필요한 것 들을 관리하는 클래스
 
 	static void print() { // 출력 함수
-
+		int width = 40;
 		frame.getGraphics().clearRect(0, 0, 500, 500);
 		// frame.setBackground(Color.blue);
 		for (int h = 0; h < DataBase.instance.slot.length; h++) {
 			for (int w = 0; w < DataBase.instance.slot.length; w++) {
 				if (DataBase.instance.slot[h][w] > 0) {
-					frame.getGraphics().drawRect((w * 40) + 40, (h * 40) + 40, 40, 40);
-					frame.getGraphics().fillRect((w * 40) + 40, (h * 40) + 40, 40, 40);
+					frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
+					frame.getGraphics().fillRect((w * width) + width, (h * width) + width, width, width);
 				} else if (DataBase.instance.slot[h][w] == 0) {
-					frame.getGraphics().drawRect((w * 40) + 40, (h * 40) + 40, 40, 40);
+					frame.getGraphics().drawRect((w * width) +width, (h * width) + width, width, width);
 				}
 			}
 		}
@@ -36,7 +36,7 @@ public class main {
 
 		// --------------------------------------------------
 
-		class key implements KeyListener {
+		class key implements KeyListener { //키입력
 
 			public void keyPressed(KeyEvent e) {
 

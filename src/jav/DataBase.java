@@ -1,6 +1,6 @@
 package jav;
 
-public class DataBase {
+public class DataBase { // 데이터 모음 클래스
 	public static DataBase instance = new DataBase();
 	public int val = 1; // 현재 블럭 모양
 	public int x = 4; // 현재 x 좌표
