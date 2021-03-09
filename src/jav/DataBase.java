@@ -6,5 +6,4 @@ public class DataBase { // 데이터 모음 클래스
 	public static int y = 1; // 현재 y 좌표 
 	public static int angle; // 각도
 	public static int[][] slot = new int[10][10]; // 10,10 슬롯 생성
-	public static int roof; // 현재 반복수
 }

@@ -4,7 +4,7 @@ public class Function { // 각종 함수 모음 클래스
 
 	public static int valu = 1; // 블록설치시 2로 변경하여 설치
 
-	public static void ZeroSet() {
+	public static void ZeroSet() { // 전부 제거하는 함수
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				DataBase.slot[y][x] = 0;
@@ -12,34 +12,36 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public static void Move(int val) {
+	public static void Move(int val) { // 블럭 이동 함수
 		MovingDel();
 		try {
 			switch (val) {
 			case 37: { // 왼
 				--DataBase.x;
-				BlockSet();
 				break;
 			}
 			case 38: { // 위
+				if (DataBase.angle < 4)
+					DataBase.angle++;
+				else
+					DataBase.angle = 0;
 				break;
 			}
 			case 39: { // 오른
 				++DataBase.x;
-				BlockSet();
 				break;
 			}
 			case 40: { // 아래
 				++DataBase.y;
-				BlockSet();
 				break;
 			}
 			}
+			BlockSet();
 		} catch (Exception e) {
 		}
 	}
 
-	public static void MovingDel() {
+	public static void MovingDel() { // 이동중인 블럭 제거
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				if (DataBase.slot[y][x] < 2) {
@@ -51,16 +53,27 @@ public class Function { // 각종 함수 모음 클래스
 		}
 	}
 
-	public static void Check() { // 10개 모였는지 확인하는 함수
-		for (int y = 0; y > 10; y++) {
+	public static void Check() { // 10개 모였는지 확인, 한줄 제거, 블럭 밀기 하는 함수
+		for (int y = 0; y < 10; y++) {
 			int sum = 0;
-			for (int x = 0; x > 10; x++) {
-				if (DataBase.slot[y][x] == 2)
+			for (int x = 0; x < 10; x++) {
+				if (DataBase.slot[y][x] > 1)
 					sum++;
 			}
-			if (sum <= 10) {
-				for (int x = 0; x > 10; x++) {
+
+			// --------------------------------------------------
+			if (sum > 9) {
+				for (int x = 0; x < 10; x++) {
 					DataBase.slot[y][x] = 0;
+				}
+				// --------------------------------------------------
+				for (int h = 9; h > 0; h--) {
+					for (int x = 9; x > 0; x--) {
+						if (DataBase.slot[h][x] > 1) {
+							DataBase.slot[h + 1][x] = DataBase.slot[h][x];// =2
+							DataBase.slot[h][x] = 0;
+						}
+					}
 				}
 			}
 		}
@@ -115,17 +128,43 @@ public class Function { // 각종 함수 모음 클래스
 		}
 		case 3: {// ㅗ 자 블럭
 
-			break;
+			switch (DataBase.angle) {
+			case 0: {
+
+				break;
+			}
+			case 1: {
+
+				break;
+			}
+			case 2: {
+
+				break;
+			}
+			case 3: {
+
+				break;
+			}
+			}
 		}
 		case 4: {// ㄹ 자 블럭
+			switch (DataBase.angle) {
+			case 0: {
 
-			break;
+				break;
+			}
+			case 1: {
+
+				break;
+			}
+
+			}
 		}
 		}
 
 	}
 
-	public static void Down() {
+	public static void Down() { // 블럭 하강 함수
 		MovingDel();
 		try {
 			try {// TODO 벽돌충돌 만들어라

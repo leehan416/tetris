@@ -26,7 +26,7 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 	public static void main(String[] args) {
 		Function.ZeroSet();
 		Function.BlockSet();
-
+		// --------------------------------------------------
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(480, 480);
 		frame.setVisible(true);
@@ -39,15 +39,13 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 				Function.Move(e.getKeyCode());
 				print();
 			}
-
 			public void keyReleased(KeyEvent e) { }
 			public void keyTyped(KeyEvent e) { }
 		}
-
 		frame.setVisible(true);
 		frame.addKeyListener(new key());
 		frame.setFocusable(true);
-
+		// --------------------------------------------------
 		while (true) {
 			try {
 				Thread.sleep(1000);
