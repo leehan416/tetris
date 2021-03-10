@@ -2,6 +2,8 @@ package jav;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
+
 import javax.swing.JFrame;
 
 public class main { // 구동에 필요한 것 들을 관리하는 클래스
@@ -22,9 +24,12 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 	}
 
 	public static JFrame frame = new JFrame("Tetris");
-
+	public static Random random = new Random();
+	
+	
 	public static void main(String[] args) {
 		Function.ZeroSet();
+		DataBase.val = (int) random.nextInt(1);
 		Function.BlockSet();
 		// --------------------------------------------------
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

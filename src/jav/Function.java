@@ -160,26 +160,23 @@ public class Function { // 각종 함수 모음 클래스
 			}
 		}
 		}
-
 	}
 
 	public static void Down() { // 블럭 하강 함수
 		MovingDel();
 		try {
-			try {// TODO 벽돌충돌 만들어라
-			} catch (Exception e) {
-			}
-
 			++DataBase.y;
-
 			BlockSet();
-		} catch (Exception e) {
-			try {
-				BlockSet();
-			} catch (Exception e2) {
-				OnEnter();
+			for (int y = 0; y < 10; y++) { // 블럭 충돌 검사
+				for (int x = 0; x < 10; x++) {
+					if (DataBase.slot[y][x] >= 3) { // 충돌시
+						MovingDel();
+						OnEnter();
+					}
+				}
 			}
-
+		} catch (Exception e) { // 땅 충돌
+			OnEnter();
 		}
 	}
 
