@@ -37,7 +37,28 @@ public class Function { // 각종 함수 모음 클래스
 			}
 			}
 			BlockSet();
-		} catch (Exception e) {
+		} catch (Exception e) { // 벽 충돌
+			switch (val) {
+			case 37: { // 왼
+				++DataBase.x;
+				break;
+			}
+			case 38: { // 위
+				if (DataBase.angle != 0)
+					DataBase.angle--;
+				else
+					DataBase.angle = 4;
+				break;
+			}
+			case 39: { // 오른
+				--DataBase.x;
+				break;
+			}
+			case 40: { // 아래
+				--DataBase.y;
+				break;
+			}
+			}
 		}
 	}
 
@@ -175,7 +196,11 @@ public class Function { // 각종 함수 모음 클래스
 					}
 				}
 			}
-		} catch (Exception e) { // 땅 충돌
+		} catch (Exception e) { // 땅 or 벽 충돌
+			try {
+				BlockSet(); // 벽 충돌
+				return;
+			} catch (Exception l) { }
 			OnEnter();
 		}
 	}
@@ -188,6 +213,5 @@ public class Function { // 각종 함수 모음 클래스
 		Check();
 		DataBase.x = 4;
 		DataBase.y = -1;
-
 	}
 }
