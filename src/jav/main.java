@@ -29,7 +29,7 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 	public static void main(String[] args) {
 
 		Function.ZeroSet(); // 초기화
-		DataBase.val = (int) main.random.nextInt(4); // 4
+		DataBase.val = (int) main.random.nextInt(5); // 4
 		DataBase.x = 4;
 		DataBase.y = 0;
 		DataBase.angle = 0;

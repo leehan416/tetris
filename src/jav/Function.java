@@ -56,7 +56,7 @@ public class Function { // 각종 함수 모음 클래스
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
-				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
+				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
 				return;
 			}
 			}
@@ -122,7 +122,7 @@ public class Function { // 각종 함수 모음 클래스
 
 	public static void Move(int val) { // 블럭 이동 함수
 		String b = "b"; // 예외 발생용 변수
-		boolean three = false; // 각도 변경시 블럭 겹치는지 판별시 사용
+		boolean three = false; // 블럭이 겹치는지 판별시 사용
 		MovingDel();
 		try {
 			switch (val) {
@@ -136,17 +136,6 @@ public class Function { // 각종 함수 모음 클래스
 					DataBase.angle++;
 				else
 					DataBase.angle = 0;
-				// --------------------------
-				BlockSet();
-				for (int y = 0; y < 10; y++) { // 블럭 돌릴때 다른 블럭에 간섭 있는지 확인
-					for (int x = 0; x < 10; x++) {
-						if (DataBase.slot[y][x] > 2) {
-							three = true;
-						}
-					}
-				}
-				// -------------------------
-
 				valu = Integer.parseInt(b);
 				break;
 			}
@@ -164,8 +153,16 @@ public class Function { // 각종 함수 모음 클래스
 
 		} catch (Exception e) { // 예외 처리
 			try {
-				if (three) { // 회전시에 다른 블럭 건들이면
-					valu = Integer.parseInt(b); //예외처리
+				BlockSet();
+				for (int y = 0; y < 10; y++) { // 블럭 이동시 다른 블럭에 간섭 있는지 확인
+					for (int x = 0; x < 10; x++) {
+						if (DataBase.slot[y][x] > 2) {
+							three = true;
+						}
+					}
+				}
+				if (three) { // 이동시에 다른 블럭 건들이면
+					valu = Integer.parseInt(b); // 예외처리
 				} else {
 					MovingDel();
 					BlockSet();
@@ -276,7 +273,7 @@ public class Function { // 각종 함수 모음 클래스
 			BlockSet(); // 블럭 설치
 			valu--;
 			Check();
-			DataBase.val = (int) main.random.nextInt(4); // 4
+			DataBase.val = (int) main.random.nextInt(5); // 4
 			DataBase.x = 4;
 			DataBase.y = 0;
 			DataBase.angle = 0;
