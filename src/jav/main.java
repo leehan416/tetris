@@ -25,11 +25,15 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 
 	public static JFrame frame = new JFrame("Tetris");
 	public static Random random = new Random();
-	
-	
+
 	public static void main(String[] args) {
+
 		Function.ZeroSet();
-		DataBase.val = (int) random.nextInt(1);
+
+		DataBase.val = 3;// (int) main.random.nextInt(4); // 4
+		DataBase.x = 4;
+		DataBase.y = 0;
+		DataBase.angle = 0;
 		Function.BlockSet();
 		// --------------------------------------------------
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,14 +48,19 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 				Function.Move(e.getKeyCode());
 				print();
 			}
-			public void keyReleased(KeyEvent e) { }
-			public void keyTyped(KeyEvent e) { }
+
+			public void keyReleased(KeyEvent e) {
+			}
+
+			public void keyTyped(KeyEvent e) {
+			}
 		}
 		frame.setVisible(true);
 		frame.addKeyListener(new key());
 		frame.setFocusable(true);
 		// --------------------------------------------------
 		while (true) {
+			print();
 			try {
 				Thread.sleep(1000);
 			} catch (Exception e) {
