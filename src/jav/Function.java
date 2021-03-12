@@ -252,6 +252,6 @@ public class Function { // 각종 함수 모음 클래스
 	}
 
 	public static void GameOver() {
-		
+		DataBase.gameover=true;
 	}
 }

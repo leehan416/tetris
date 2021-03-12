@@ -60,6 +60,9 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 		frame.setFocusable(true);
 		// --------------------------------------------------
 		while (true) {
+			if (DataBase.gameover) {
+				break;
+			}
 			print();
 			try {
 				Thread.sleep(1000);
