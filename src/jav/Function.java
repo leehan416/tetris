@@ -121,7 +121,7 @@ public class Function { // 각종 함수 모음 클래스
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x - 1] += valu;
 			}
-			break;
+			return;
 		}
 		case 1: {// ㅁ 자 블럭
 			DataBase.slot[DataBase.y][DataBase.x] += valu;
@@ -137,28 +137,28 @@ public class Function { // 각종 함수 모음 클래스
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x - 1] += valu;
 				DataBase.slot[DataBase.y][DataBase.x - 2] += valu;
-				break;
+				return;
 			}
 			case 1: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 2][DataBase.x - 1] += valu;
-				break;
+				return;
 			}
 			case 2: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 2] += valu;
-				break;
+				return;
 			}
 			case 3: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
-				break;
+				return;
 			}
 			}
 			break;
@@ -170,28 +170,29 @@ public class Function { // 각종 함수 모음 클래스
 				DataBase.slot[DataBase.y + 1][DataBase.x - 1] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
-				break;
+			return;
+	
 			}
 			case 1: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
 				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
-				break;
+				return;
 			}
 			case 2: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
 				DataBase.slot[DataBase.y][DataBase.x + 2] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
-				break;
+				return;
 			}
 			case 3: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x - 1] += valu;
 				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
-				break;
+				return;
 			}
 			}
 		}
@@ -207,6 +208,7 @@ public class Function { // 각종 함수 모음 클래스
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
 			}
+			return;
 		}
 		}
 	}
@@ -247,5 +249,9 @@ public class Function { // 각종 함수 모음 클래스
 		DataBase.y = 0;
 		DataBase.angle = 0;
 
+	}
+
+	public static void GameOver() {
+		
 	}
 }
