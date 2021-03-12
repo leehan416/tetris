@@ -111,7 +111,6 @@ public class Function { // 각종 함수 모음 클래스
 		switch (DataBase.val) {
 		case 0: { // ㅣ 자 블럭
 			if ((DataBase.angle % 2) == 1) { // 0 or 180
-
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
@@ -162,11 +161,9 @@ public class Function { // 각종 함수 모음 클래스
 				break;
 			}
 			}
-
 			break;
 		}
 		case 3: {// ㅗ 자 블럭
-
 			switch (DataBase.angle) { // 버그 많음
 			case 0: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
@@ -199,21 +196,16 @@ public class Function { // 각종 함수 모음 클래스
 			}
 		}
 		case 4: {// ㄹ 자 블럭
-			switch (DataBase.angle) {
-			case 0: {
-				DataBase.slot[DataBase.y + 2][DataBase.x] += valu;
-				DataBase.slot[DataBase.y + 2][DataBase.x - 1] += valu;
-				DataBase.slot[DataBase.y + 2][DataBase.x + 1] += valu;
+			if ((DataBase.angle % 2) == 1) { // 0 or 180
+				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
-				break;
-			}
-			case 1: {
+				DataBase.slot[DataBase.y + 1][DataBase.x - 1] += valu;
+				DataBase.slot[DataBase.y + 2][DataBase.x - 1] += valu;
+			} else {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y][DataBase.x - 1] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
-				break;
-			}
 			}
 		}
 		}
