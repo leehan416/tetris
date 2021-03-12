@@ -28,20 +28,17 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 
 	public static void main(String[] args) {
 
-		Function.ZeroSet();
-
-		DataBase.val = 3;// (int) main.random.nextInt(4); // 4
+		Function.ZeroSet(); // 초기화
+		DataBase.val = (int) main.random.nextInt(4); // 4
 		DataBase.x = 4;
 		DataBase.y = 0;
 		DataBase.angle = 0;
 		Function.BlockSet();
 		// --------------------------------------------------
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(480, 480);
+		frame.setSize(480, 480); // canvas 크기 조정
 		frame.setVisible(true);
-
 		// --------------------------------------------------
-
 		class key implements KeyListener { // 키입력
 
 			public void keyPressed(KeyEvent e) {
@@ -60,17 +57,18 @@ public class main { // 구동에 필요한 것 들을 관리하는 클래스
 		frame.setFocusable(true);
 		// --------------------------------------------------
 		while (true) {
-			if (DataBase.gameover) {
+			if (DataBase.gameover) { // 패배시
 				break;
+			} else {
+				print();
+				try { // 초당 1 프레임
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				print();
+				Function.Down();
 			}
-			print();
-			try {
-				Thread.sleep(1000);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			print();
-			Function.Down();
 		}
 	}
 }
