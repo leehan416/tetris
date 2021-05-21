@@ -1,14 +1,14 @@
 package jav;
 
-public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
+public class Function { // ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 
-	public static int valu = 1; // ºí·Ï¼³Ä¡½Ã 2·Î º¯°æÇÏ¿© ¼³Ä¡
+	public static int valu = 1; // ï¿½ï¿½Ï¼ï¿½Ä¡ï¿½ï¿½ 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½Ä¡
 
-	public static void BlockSet() { // ºí·° ¼¼ÆÃÇÏ´Â ÇÔ¼ö
-		// ToDoList : °¡Àå ¾Æ·¡ÀÖ´Â ºí·°À¸·Î ¼¼ÆÃÇÏ´Â ÇÔ¼ö·Î ´Ù½Ã Â¥¾ßÇÔ
+	public static void BlockSet() { // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
+		// ToDoList : ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ Â¥ï¿½ï¿½ï¿½ï¿½
 
 		switch (DataBase.val) {
-		case 0: { // ¤Ó ÀÚ ºí·°
+		case 0: { // lì ë¸”ëŸ­  
 			if ((DataBase.angle % 2) == 1) { // 0 or 180
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
@@ -22,14 +22,14 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 			}
 			return;
 		}
-		case 1: {// ¤± ÀÚ ºí·°
+		case 1: {// ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 			DataBase.slot[DataBase.y][DataBase.x] += valu;
 			DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
 			DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
 			DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
 			return;
 		}
-		case 2: {// ¤¡ ÀÚ ºí·°
+		case 2: {// ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 			switch (DataBase.angle) {
 			case 0: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
@@ -62,7 +62,7 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 			}
 			return;
 		}
-		case 3: {// ¤Ç ÀÚ ºí·°
+		case 3: {// ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 			switch (DataBase.angle) {
 			case 0: {
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
@@ -95,7 +95,7 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 			}
 			return;
 		}
-		case 4: {// ¤© ÀÚ ºí·°
+		case 4: {// ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½
 			if ((DataBase.angle % 2) == 1) { // 0 or 180
 				DataBase.slot[DataBase.y][DataBase.x] += valu;
 				DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
@@ -112,7 +112,7 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void ZeroSet() { // ÀüºÎ Á¦°ÅÇÏ´Â ÇÔ¼ö
+	public static void ZeroSet() { // ë§µ ì´ˆê¸°í™” í•¨ìˆ˜ 
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				DataBase.slot[y][x] = 0;
@@ -120,18 +120,18 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void Move(int val) { // ºí·° ÀÌµ¿ ÇÔ¼ö
-		String b = "b"; // ¿¹¿Ü ¹ß»ı¿ë º¯¼ö
-		boolean three = false; // ºí·°ÀÌ °ãÄ¡´ÂÁö ÆÇº°½Ã »ç¿ë
+	public static void Move(int val) { // ì´ë™ í•¨ìˆ˜ 
+		String b = "b"; // ì˜ˆì™¸ ë°œìƒë³€ìˆ˜ 
+		boolean three = false; // ë¸”ëŸ­ ê²¹ì¹¨ ê²€ì‚¬ í•¨ìˆ˜ 
 		MovingDel();
 		try {
 			switch (val) {
-			case 37: { // ¿Ş
+			case 37: { //ì™¼ìª½ í‚¤ 
 				--DataBase.x;
-				valu = Integer.parseInt(b); // ¿¹¿Ü ¹ß»ı
+				valu = Integer.parseInt(b); //ì˜ˆì™¸ ë°œìƒ 
 				break;
 			}
-			case 38: { // À§
+			case 38: { // ìœ„ìª½ í‚¤ 
 				if (DataBase.angle < 3)
 					DataBase.angle++;
 				else
@@ -139,43 +139,43 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 				valu = Integer.parseInt(b);
 				break;
 			}
-			case 39: { // ¿À¸¥
+			case 39: { //ì˜¤ë¥¸ ìª½ 
 				++DataBase.x;
 				valu = Integer.parseInt(b);
 				break;
 			}
-			case 40: { // ¾Æ·¡
+			case 40: { //ì•„ë˜ í‚¤ 
 				++DataBase.y;
 				valu = Integer.parseInt(b);
 				break;
 			}
 			}
 
-		} catch (Exception e) { // ¿¹¿Ü Ã³¸®
+		} catch (Exception e) { // ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 			try {
 				BlockSet();
-				for (int y = 0; y < 10; y++) { // ºí·° ÀÌµ¿½Ã ´Ù¸¥ ºí·°¿¡ °£¼· ÀÖ´ÂÁö È®ÀÎ
+				for (int y = 0; y < 10; y++) { // ë¸”ëŸ­ ê²¹ì³¤ëŠ”ì§€ ê²€ì‚¬ 
 					for (int x = 0; x < 10; x++) {
 						if (DataBase.slot[y][x] > 2) {
 							three = true;
 						}
 					}
 				}
-				if (three) { // ÀÌµ¿½Ã¿¡ ´Ù¸¥ ºí·° °ÇµéÀÌ¸é
-					valu = Integer.parseInt(b); // ¿¹¿ÜÃ³¸®
-				} else {
+				if (three) { //ë¸”ëŸ­ì´ ê²¹ì³¤ìœ¼ë©´ 
+					valu = Integer.parseInt(b); // ì˜ˆì™¸ ë°œìƒ 
+				} else { // ê²¹ì¹œê²Œ ì•„ë‹ˆë¼ë©´ 
 					MovingDel();
 					BlockSet();
 				}
-			} catch (Exception k) { // º® Ãæµ¹
+			} catch (Exception k) { //ê²¹ì¹˜ê¸° ì´ì „ìœ¼ë¡œ ìƒí™© ë³€ê²½ 
 				try {
 					switch (val) {
-					case 37: { // ¿Ş
+					case 37: { //ì™¼ 
 						++DataBase.x;
 						valu = Integer.parseInt(b);
 						break;
 					}
-					case 38: { // À§
+					case 38: { // ìœ„ 
 						if (DataBase.angle != 0)
 							DataBase.angle--;
 						else // 0
@@ -184,12 +184,12 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 						valu = Integer.parseInt(b);
 						break;
 					}
-					case 39: { // ¿À¸¥
+					case 39: { // ì˜¤ë¥¸ 
 						--DataBase.x;
 						valu = Integer.parseInt(b);
 						break;
 					}
-					case 40: { // ¾Æ·¡
+					case 40: { // ì•„ë˜ 
 						--DataBase.y;
 						valu = Integer.parseInt(b);
 						break;
@@ -203,7 +203,7 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void MovingDel() { // ÀÌµ¿ÁßÀÎ ºí·° Á¦°Å
+	public static void MovingDel() { // ì´ë™ì„ ìœ„í•´ ì œê±° (1ì¸ ë°ì´í„° ì œê±°)
 		for (int y = 0; y < 10; y++) {
 			for (int x = 0; x < 10; x++) {
 				if (DataBase.slot[y][x] < 2) {
@@ -215,20 +215,20 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void Check() { // 10°³ ¸ğ¿´ ´ÂÁö È®ÀÎ, ÇÑÁÙ Á¦°Å, ºí·° ¶Ä±â±â ÇÏ´Â ÇÔ¼ö
+	public static void Check() { // í•œì¤„ì´ ë‹¤ ì°¼ëŠ”ì§€ ê²€ì‚¬í•˜ëŠ” í•¨ìˆ˜ 
 		for (int y = 0; y < 10; y++) {
 			int sum = 0;
-			for (int x = 0; x < 10; x++) { // 10 °³ ¸ğ¿´´ÂÁö °Ë»ç
+			for (int x = 0; x < 10; x++) { // 10 ê°œ ì°¼ëŠ”ì§€ ê²€ì‚¬ 
 				if (DataBase.slot[y][x] > 1)
 					sum++;
 			}
 			// --------------------------------------------------
-			if (sum > 9) { // ¸ğ¿´À¸¸é
+			if (sum > 9) {// ë‹¤ ì°¨ìˆìœ¼ë©´ 
 				for (int x = 0; x < 10; x++) {
-					DataBase.slot[y][x] = 0; // ºí·° ÇÑÁÙ Á¦°Å
+					DataBase.slot[y][x] = 0; // ì¤„ ì œê±° 
 				}
 				// --------------------------------------------------
-				for (int h = y; h > -1; h--) { // ºí·° ‹¯±â±â
+				for (int h = y; h > -1; h--) { // ë–™ê¸°ê¸° 
 					for (int w = 0; w < 10; w++) {
 						try {
 							DataBase.slot[h][w] = DataBase.slot[h - 1][w];
@@ -240,39 +240,39 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void Down() { // ºí·° ÇÏ°­ ÇÔ¼ö
-		MovingDel();
+	public static void Down() { //ì•„ë˜ë¡œ ì´ë™í•˜ëŠ” í•¨ìˆ˜ 
+		MovingDel(); // ì´ë™ì„ ìœ„í•´ ì œê±° 
 		try {
-			++DataBase.y;
-			BlockSet();
-			for (int y = 0; y < 10; y++) { // ºí·° Ãæµ¹ °Ë»ç
+			++DataBase.y; // ì´ë™ 
+			BlockSet(); //ë‹¤ì‹œ ë¸”ëŸ­ ì„¸íŒ… 
+			for (int y = 0; y < 10; y++) { // ì¶©ëŒ ê²€ì‚¬ 
 				for (int x = 0; x < 10; x++) {
-					if (DataBase.slot[y][x] >= 3) { // Ãæµ¹½Ã
+					if (DataBase.slot[y][x] >= 3) { //ì¶©ëŒì‹œ 
 						MovingDel();
 						OnEnter();
 					}
 				}
 			}
-		} catch (Exception e) { // ¶¥ or º® Ãæµ¹
+		} catch (Exception e) { // ï¿½ï¿½ or ï¿½ï¿½ ï¿½æµ¹
 			try {
-				BlockSet(); // º® Ãæµ¹
+				BlockSet(); // ï¿½ï¿½ ï¿½æµ¹
 				return;
-			} catch (Exception l) {
-			}
-			OnEnter();
+			} catch (Exception l) { }
+			OnEnter(); // ì¶©ëŒ 
 		}
 	}
 
-	public static void OnEnter() { // Ãæµ¹(Á¢ÃË)½Ã
-		if (DataBase.y == 0) { // ºí·°ÀÌ ÃµÀå¿¡ ÀÖÀ¸¸é
-			GameOver();
+	public static void OnEnter() { //ì¶©ëŒ í•¨ìˆ˜ 
+		if (DataBase.y == 0) { // ë§Œì•½ ì¶©ëŒ ìœ„ì¹˜ê°€ 0 ì´ë©´ 
+			GameOver(); // íŒ¨ë°° 
 			return;
-		} else {
-			--DataBase.y; // Ãæµ¹·Î ÀÎÇØ ¹®Á¦°¡ ¹ß»ıÇÏ¿´À¸¹Ç·Î y ¸¦ ÀÌÀüÀ¸·Î ÀÌµ¿
-			valu++;// ºí·° ¼³Ä¡ À§ÇØ 2·Î º¯°æ
-			BlockSet(); // ºí·° ¼³Ä¡
+		} else { // ê·¸ë ‡ì§€ ì•Šë‹¤ë©´ 
+			--DataBase.y; // ì¶©ëŒ ì´ì „ ìœ„ì¹˜ë¡œ ì´ë™ 
+			valu++;//ë¸”ëŸ­ ì„¤ì¹˜ë¥¼ ìœ„í•´ ë³€ìˆ˜ í™œ
+			BlockSet(); //ë¸”ëŸ­ ì„¸íŒ… 
 			valu--;
 			Check();
+			// ---------------------------------------------
 			DataBase.val = (int) main.random.nextInt(5); // 4
 			DataBase.x = 4;
 			DataBase.y = 0;
@@ -280,7 +280,7 @@ public class Function { // °¢Á¾ ÇÔ¼ö ¸ğÀ½ Å¬·¡½º
 		}
 	}
 
-	public static void GameOver() {
+	public static void GameOver() { // ê²Œì„íŒ¨ë°° 
 		DataBase.gameover = true;
 	}
 }

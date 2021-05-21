@@ -1,10 +1,10 @@
 package jav;
 
-public class DataBase { // µ¥ÀÌÅÍ ¸ğÀ½ Å¬·¡½º
-	public static int val = 0; // ÇöÀç ºí·° ¸ğ¾ç
-	public static int x = 4; // ÇöÀç x ÁÂÇ¥
-	public static int y = 1; // ÇöÀç y ÁÂÇ¥ 
-	public static int angle; // °¢µµ
-	public static boolean gameover = false;
-	public static int[][] slot = new int[10][10]; // 10,10 ½½·Ô »ı¼º
+public class DataBase { 
+	public static int val = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
+	public static int x = 4; // ï¿½ï¿½ï¿½ï¿½ x ï¿½ï¿½Ç¥
+	public static int y = 1; // ï¿½ï¿½ï¿½ï¿½ y ï¿½ï¿½Ç¥ 
+	public static int angle; //ê°ë„ 
+	public static boolean gameover = false; // íŒ¨ë°° íŒë³„ ë³€ìˆ˜ 
+	public static int[][] slot = new int[10][10]; // 10,10ë§µ 
 }

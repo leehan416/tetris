@@ -6,62 +6,56 @@ import java.util.Random;
 
 import javax.swing.JFrame;
 
-public class main { // ±∏µøø° « ø‰«— ∞Õ µÈ¿ª ∞¸∏Æ«œ¥¬ ≈¨∑°Ω∫
+public class main { 
 
-	static void print() { // √‚∑¬ «‘ºˆ
+	static void print() { // Ï∂úÎ†• Ìï®Ïàò 
 		int width = 40;
-		frame.getGraphics().clearRect(0, 0, 500, 500);
+		Ui.frame.getGraphics().clearRect(0, 0, 500, 500);
 		for (int h = 0; h < DataBase.slot.length; h++) {
 			for (int w = 0; w < DataBase.slot.length; w++) {
 				if (DataBase.slot[h][w] > 0) {
-					frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
-					frame.getGraphics().fillRect((w * width) + width, (h * width) + width, width, width);
+					Ui.frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
+					Ui.frame.getGraphics().fillRect((w * width) + width, (h * width) + width, width, width);
 				} else if (DataBase.slot[h][w] == 0) {
-					frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
+					Ui.frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
 				}
 			}
 		}
 	}
 
-	public static JFrame frame = new JFrame("Tetris");
+	//public static JFrame frame = new JFrame("Tetris");
 	public static Random random = new Random();
 
 	public static void main(String[] args) {
 
-		Function.ZeroSet(); // √ ±‚»≠
+		Function.ZeroSet(); // ÔøΩ ±ÔøΩ»≠
 		DataBase.val = (int) main.random.nextInt(5); // 4
 		DataBase.x = 4;
 		DataBase.y = 0;
 		DataBase.angle = 0;
 		Function.BlockSet();
-		// --------------------------------------------------
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(480, 480); // canvas ≈©±‚ ¡∂¡§
-		frame.setVisible(true);
-		// --------------------------------------------------
-		class key implements KeyListener { // ≈∞¿‘∑¬
+		Ui ui = new Ui(); // Í∑∏ÎûòÌîΩÏ∞Ω ÏÉùÏÑ± 
+		class key implements KeyListener { // ≈∞ÔøΩ‘∑ÔøΩ
 
 			public void keyPressed(KeyEvent e) {
 				Function.Move(e.getKeyCode());
 				print();
 			}
 
-			public void keyReleased(KeyEvent e) {
-			}
+			public void keyReleased(KeyEvent e) { }
 
-			public void keyTyped(KeyEvent e) {
-			}
+			public void keyTyped(KeyEvent e) { }
 		}
-		frame.setVisible(true);
-		frame.addKeyListener(new key());
-		frame.setFocusable(true);
-		// --------------------------------------------------
+		Ui.frame.setVisible(true);
+		Ui.frame.addKeyListener(new key());
+		Ui.frame.setFocusable(true);
+		// --------------------------------------------------*/
 		while (true) {
-			if (DataBase.gameover) { // ∆–πËΩ√
+			if (DataBase.gameover) { // ÔøΩ–πÔøΩÔøΩ
 				break;
 			} else {
 				print();
-				try { // √ ¥Á 1 «¡∑π¿”
+				try { // ÔøΩ ¥ÔøΩ 1 ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
 					Thread.sleep(1000);
 				} catch (Exception e) {
 					e.printStackTrace();
