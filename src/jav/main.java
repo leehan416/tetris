@@ -49,6 +49,10 @@ public class main {
 		Ui.frame.addKeyListener(new key());
 		Ui.frame.setFocusable(true);
 		// --------------------------------------------------
+		DataBase.val = (int) main.random.nextInt(7);
+			
+		
+		
 		while (true) {
 
 			if (DataBase.gameover) { //패배 했다면 
