@@ -10,9 +10,9 @@ public class main {
 
 	static void print() { // 출력 함수 
 		int width = 40;
-		Ui.frame.getGraphics().clearRect(0, 0, 500, 500);
-		for (int h = 0; h < DataBase.slot.length; h++) {
-			for (int w = 0; w < DataBase.slot.length; w++) {
+		Ui.frame.getGraphics().clearRect(0, 0, 500, 1000);
+		for (int h = 0; h < 17; h++) {
+			for (int w = 0; w < 10; w++) {
 				if (DataBase.slot[h][w] > 0) {
 					Ui.frame.getGraphics().drawRect((w * width) + width, (h * width) + width, width, width);
 					Ui.frame.getGraphics().fillRect((w * width) + width, (h * width) + width, width, width);
@@ -29,6 +29,7 @@ public class main {
 		Function.ZeroSet(); // 맵 초기화 
 		Function.NewBlockSet();
 		Function.BlockSet();
+
 		Ui ui = new Ui(); // 그래픽창 생성 
 		class key implements KeyListener { //키 입력 
 
@@ -46,6 +47,7 @@ public class main {
 		Ui.frame.setFocusable(true);
 		// --------------------------------------------------*/
 		while (true) {
+
 			if (DataBase.gameover) { //패배 했다면 
 				break; // 그만 
 			} else {
