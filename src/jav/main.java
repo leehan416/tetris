@@ -22,20 +22,15 @@ public class main {
 			}
 		}
 	}
-
-	//public static JFrame frame = new JFrame("Tetris");
 	public static Random random = new Random();
 
 	public static void main(String[] args) {
 
-		Function.ZeroSet(); // �ʱ�ȭ
-		DataBase.val = (int) main.random.nextInt(5); // 4
-		DataBase.x = 4;
-		DataBase.y = 0;
-		DataBase.angle = 0;
+		Function.ZeroSet(); // 맵 초기화 
+		Function.NewBlockSet();
 		Function.BlockSet();
 		Ui ui = new Ui(); // 그래픽창 생성 
-		class key implements KeyListener { // Ű�Է�
+		class key implements KeyListener { //키 입력 
 
 			public void keyPressed(KeyEvent e) {
 				Function.Move(e.getKeyCode());
@@ -51,11 +46,11 @@ public class main {
 		Ui.frame.setFocusable(true);
 		// --------------------------------------------------*/
 		while (true) {
-			if (DataBase.gameover) { // �й��
-				break;
+			if (DataBase.gameover) { //패배 했다면 
+				break; // 그만 
 			} else {
 				print();
-				try { // �ʴ� 1 ������
+				try { //1 초당 1 프레임 
 					Thread.sleep(1000);
 				} catch (Exception e) {
 					e.printStackTrace();

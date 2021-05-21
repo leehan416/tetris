@@ -1,11 +1,11 @@
 package jav;
 
-public class Function { // ���� �Լ� ���� Ŭ����
+public class Function { 
 
-	public static int valu = 1; // ��ϼ�ġ�� 2�� �����Ͽ� ��ġ
+	public static int valu = 1; 
 
-	public static void BlockSet() { // �� �����ϴ� �Լ�
-		// ToDoList : ���� �Ʒ��ִ� ������ �����ϴ� �Լ��� �ٽ� ¥����
+	public static void BlockSet() {
+		
 
 		switch (DataBase.val) {
 		case 0: { // l자 블럭  
@@ -245,7 +245,7 @@ public class Function { // ���� �Լ� ���� Ŭ����
 		try {
 			++DataBase.y; // 이동 
 			BlockSet(); //다시 블럭 세팅 
-			for (int y = 0; y < 10; y++) { // 충돌 검사 
+			for (int y = 0; y < 10; y++) { //블럭과 충돌 검사 
 				for (int x = 0; x < 10; x++) {
 					if (DataBase.slot[y][x] >= 3) { //충돌시 
 						MovingDel();
@@ -253,7 +253,7 @@ public class Function { // ���� �Լ� ���� Ŭ����
 					}
 				}
 			}
-		} catch (Exception e) { // �� or �� �浹
+		} catch (Exception e) { //바닥 충돌  or �� �浹
 			try {
 				BlockSet(); // �� �浹
 				return;
@@ -273,13 +273,15 @@ public class Function { // ���� �Լ� ���� Ŭ����
 			valu--;
 			Check();
 			// ---------------------------------------------
-			DataBase.val = (int) main.random.nextInt(5); // 4
-			DataBase.x = 4;
-			DataBase.y = 0;
-			DataBase.angle = 0;
+			NewBlockSet();
 		}
 	}
-
+	public static void NewBlockSet() { //새로운 블럭 생성 
+		DataBase.val = (int) main.random.nextInt(5); // 4
+		DataBase.x = 4;
+		DataBase.y = 0;
+		DataBase.angle = 0;
+	}
 	public static void GameOver() { // 게임패배 
 		DataBase.gameover = true;
 	}
