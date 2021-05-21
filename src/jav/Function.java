@@ -3,7 +3,7 @@ package jav;
 public class Function {
 
 	public static int valu = 1;
-
+	public static boolean ishold = false;
 	public static void BlockSet() {
 		switch (DataBase.val) {
 			case 0: { // l자 블럭
@@ -132,16 +132,19 @@ public class Function {
 				return;
 			} case 6: {
 				if ((DataBase.angle % 2) == 1) { // 0 or 180
-					DataBase.slot[DataBase.y - 1][DataBase.x + 1] += valu;
+
+					DataBase.slot[DataBase.y - 1][DataBase.x] += valu;
+					DataBase.slot[DataBase.y][DataBase.x] += valu;
+					DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
+					DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
+	
+				} else {
 					DataBase.slot[DataBase.y][DataBase.x + 1] += valu;
 					DataBase.slot[DataBase.y][DataBase.x] += valu;
 					DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
-	
-				} else {
-					DataBase.slot[DataBase.y][DataBase.x - 1] += valu;
-					DataBase.slot[DataBase.y][DataBase.x] += valu;
-					DataBase.slot[DataBase.y + 1][DataBase.x] += valu;
-					DataBase.slot[DataBase.y + 1][DataBase.x + 1] += valu;
+					DataBase.slot[DataBase.y + 1][DataBase.x - 1] += valu;
+					
+					
 				}
 			}
 		}
@@ -305,9 +308,49 @@ public class Function {
 			NewBlockSet();
 		}
 	}
-
+	public static void Hold () {
+		ishold = true;
+		MovingDel();
+		NewBlockSet();
+	}
+	
 	public static void NewBlockSet() { // 새로운 블럭 생성
-		DataBase.val = (int) main.random.nextInt(7); // 6
+		if (ishold) {
+			int a = 0;
+			if (DataBase.hold != 0) {
+				a = DataBase.hold;
+				DataBase.hold = DataBase.val;
+				DataBase.val = a;
+			} else {
+				DataBase.hold = DataBase.val;
+				//---------------------------------
+				//TODO 이 부분 최적화 해야함 
+				DataBase.val = DataBase.next[0];
+				for (int i = 0; i < DataBase.next.length; i ++) {
+					try {
+						DataBase.next [i] = DataBase.next[i+1];
+					} catch(Exception k ) { break; }	
+				}
+				while (true) {
+					DataBase.next[3] = (int) main.random.nextInt(7); // 6		
+					if (DataBase.next[2] != DataBase.next[3])
+						break;
+				}
+				//-------------------------------
+			}
+		} else {
+			DataBase.val = DataBase.next[0];
+			for (int i = 0; i < DataBase.next.length; i ++) {
+				try {
+					DataBase.next [i] = DataBase.next[i+1];
+				} catch(Exception k ) { break; }	
+			}
+			while (true) {
+				DataBase.next[3] = (int) main.random.nextInt(7); // 6		
+				if (DataBase.next[2] != DataBase.next[3])
+					break;
+			}
+		}
 		DataBase.x = 4;
 		DataBase.y = 0;
 		DataBase.angle = 0;

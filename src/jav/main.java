@@ -10,7 +10,7 @@ public class main {
 
 	static void print() { // 출력 함수 
 		int width = 40;
-		Ui.frame.getGraphics().clearRect(0, 0, 500, 1000);
+		Ui.frame.getGraphics().clearRect(0, 0, 800, 1000);
 		for (int h = 0; h < 17; h++) {
 			for (int w = 0; w < 10; w++) {
 				if (DataBase.slot[h][w] > 0) {
@@ -36,6 +36,9 @@ public class main {
 			public void keyPressed(KeyEvent e) {
 				Function.Move(e.getKeyCode());
 				print();
+				if ((e.getKeyCode() == 16) && (!Function.ishold)) {
+					Function.Hold();
+				}
 			}
 
 			public void keyReleased(KeyEvent e) { }
@@ -45,7 +48,7 @@ public class main {
 		Ui.frame.setVisible(true);
 		Ui.frame.addKeyListener(new key());
 		Ui.frame.setFocusable(true);
-		// --------------------------------------------------*/
+		// --------------------------------------------------
 		while (true) {
 
 			if (DataBase.gameover) { //패배 했다면 
