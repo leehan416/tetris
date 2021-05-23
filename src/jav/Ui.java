@@ -6,7 +6,6 @@ public class Ui {
 
 	public static JFrame frame = new JFrame("Tetris");
 	
-	
 	Ui() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(700, 960); // canvas size set

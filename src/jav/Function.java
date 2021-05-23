@@ -2,14 +2,11 @@ package jav;
 
 public class Function {
 
-	public static int valu = 1;
 	public static boolean ishold = false;
 
 	public static void ZeroSet() { // 맵 초기화 함수
 		for (int y = 0; y < 17; y++) {
-			for (int x = 0; x < 10; x++) {
-				DataBase.slot[y][x] = 0;
-			}
+			for (int x = 0; x < 10; x++) { DataBase.slot[y][x] = 0; }
 		}
 	}
 
@@ -19,33 +16,30 @@ public class Function {
 		MovingDel();
 		try {
 			switch (val) {
-			case 37: { // 왼쪽 키
-				--DataBase.x;
-				valu = Integer.parseInt(b); // 예외 발생
-				break;
-			}
-			case 38: { // 위쪽 키
-				if (DataBase.angle < 3)
-					DataBase.angle++;
-				else
-					DataBase.angle = 0;
-				valu = Integer.parseInt(b);
-				break;
-			}
-			case 39: { // 오른 쪽
-				++DataBase.x;
-				valu = Integer.parseInt(b);
-				break;
-			}
-			case 40: { // 아래 키
-				++DataBase.y;
-				valu = Integer.parseInt(b);
-				break;
-			}
+				case 37: { // 왼쪽 키
+					--DataBase.x;
+					int a = Integer.parseInt(b); // 예외 발생
+					break;
+				} case 38: { // 위쪽 키
+					if (DataBase.angle < 3)
+						DataBase.angle++;
+					else
+						DataBase.angle = 0;
+					int a  = Integer.parseInt(b);
+					break;
+				} case 39: { // 오른 쪽
+					++DataBase.x;
+					int a  = Integer.parseInt(b);
+					break;
+				} case 40: { // 아래 키
+					++DataBase.y;
+					int a = Integer.parseInt(b);
+					break;
+				}
 			}
 		} catch (Exception e) {
 			try {
-				BlockController.BlockSet(valu); // 블럭 세팅
+				BlockController.BlockSet(1); // 블럭 세팅
 				for (int y = 0; y < 17; y++) { // 블럭 겹쳤는지 검사
 					for (int x = 0; x < 10; x++) {
 						if (DataBase.slot[y][x] > 2) {
@@ -54,17 +48,17 @@ public class Function {
 					}
 				}
 				if (three) { // 블럭이 겹쳤으면
-					valu = Integer.parseInt(b); // 예외 발생
+					int a  = Integer.parseInt(b); // 예외 발생
 				} else { // 겹친게 아니라면
 					MovingDel();
-					BlockController.BlockSet(valu); // 블럭 세팅
+					BlockController.BlockSet(1); // 블럭 세팅
 				}
 			} catch (Exception k) { // 겹치기 이전으로 상황 변경
 				try {
 					switch (val) {
 					case 37: { // 왼
 						++DataBase.x;
-						valu = Integer.parseInt(b);
+						int a  = Integer.parseInt(b);
 						break;
 					}
 					case 38: { // 위
@@ -73,23 +67,23 @@ public class Function {
 						else // 0
 							DataBase.angle = 4;
 
-						valu = Integer.parseInt(b);
+						int a  = Integer.parseInt(b);
 						break;
 					}
 					case 39: { // 오른
 						--DataBase.x;
-						valu = Integer.parseInt(b);
+						int a  = Integer.parseInt(b);
 						break;
 					}
 					case 40: { // 아래
 						--DataBase.y;
-						valu = Integer.parseInt(b);
+						int a  = Integer.parseInt(b);
 						break;
 					}
 					}
 				} catch (Exception r) {
 					MovingDel();
-					BlockController.BlockSet(valu); // 블럭 세팅
+					BlockController.BlockSet(1); // 블럭 세팅
 				}
 			}
 		}
@@ -124,8 +118,7 @@ public class Function {
 					for (int w = 0; w < 10; w++) {
 						try {
 							DataBase.slot[h][w] = DataBase.slot[h - 1][w];
-						} catch (Exception e) {
-						}
+						} catch (Exception e) { }
 					}
 				}
 			}
@@ -136,7 +129,7 @@ public class Function {
 		MovingDel(); // 이동을 위해 제거
 		try {
 			++DataBase.y; // 이동
-			BlockController.BlockSet(valu); // 블럭 세팅
+			BlockController.BlockSet(1); // 블럭 세팅
 			for (int y = 0; y < 17; y++) { // 블럭과 충돌 검사
 				for (int x = 0; x < 10; x++) {
 					if (DataBase.slot[y][x] >= 3) { // 충돌시
@@ -145,17 +138,18 @@ public class Function {
 					}
 				}
 			}
-		} catch (Exception e) { // 바닥 충돌 or 게임 패배
+		} catch (Exception e) { // 바닥 충돌
 			try {
-				BlockController.BlockSet(valu); // 블럭 세팅
+				MovingDel();
+				BlockController.BlockSet(1); // 블럭 세팅
 				return;
-			} catch (Exception l) {
-			}
+			} catch (Exception l) { }
 			OnEnter(); // 충돌
 		}
 	}
 
 	public static void OnEnter() { // 충돌 함수
+		MovingDel();
 		if (ishold) {
 			ishold = false;
 		}
@@ -164,22 +158,20 @@ public class Function {
 			return;
 		} else { // 그렇지 않다면
 			--DataBase.y; // 충돌 이전 위치로 이동
-			valu++;// 블럭 설치를 위해 변수 활
-			BlockController.BlockSet(valu); // 블럭 세팅
-			valu--;
+			BlockController.BlockSet(2); // 블럭 세팅
 			Check();
 			// ---------------------------------------------
 			NewBlockSet();
 		}
 	}
-
+	static boolean first = false; // 이전 hold 가 0 이었는
 	public static void Hold() {
 		ishold = true;
 		MovingDel();
 		int a = 0;
-
 		if (DataBase.hold == 0) {
 			DataBase.hold = DataBase.val + 1;
+			first = true;
 		} else {
 			a = DataBase.hold - 1;
 			DataBase.hold = DataBase.val + 1;
@@ -189,19 +181,23 @@ public class Function {
 	}
 
 	public static void NewBlockSet() { // 새로운 블럭 생성
-		DataBase.val = DataBase.next[0];
-		for (int i = 0; i < DataBase.next.length; i++) {
-			try {
-				DataBase.next[i] = DataBase.next[i + 1];
-			} catch (Exception k) {
-				break;
+		if (!ishold || first) {
+			if (first)
+				first = false;
+			DataBase.val = DataBase.next[0];
+		 // ------------------------------------------------		
+			for (int i = 0; i < DataBase.next.length; i++) { //next 에 있는 변수들 땡기기 
+				try {
+					DataBase.next[i] = DataBase.next[i + 1];
+				} catch (Exception k) { break; }
+			}
+			while (true) { // 이전 턴과 다른 변수 생성 
+				DataBase.next[3] = (int) main.random.nextInt(7); // 6
+				if (DataBase.next[2] != DataBase.next[3])
+					break;
 			}
 		}
-		while (true) {
-			DataBase.next[3] = (int) main.random.nextInt(7); // 6
-			if (DataBase.next[2] != DataBase.next[3])
-				break;
-		}
+		//---------------------------------------------------
 		DataBase.x = 4;
 		DataBase.y = 0;
 		DataBase.angle = 0;

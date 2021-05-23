@@ -24,8 +24,8 @@ public class main {
 		Ui.frame.getGraphics().drawRect(500, 40, 150, 150); // hold 
 		Ui.frame.getGraphics().drawRect(475, 200, 200, 490); // next block 
 		BlockController.NextBlockPrint();
-		if (DataBase.hold != 0)
-		BlockController.DrawBlocks(DataBase.hold - 1,530, 95);
+		if (DataBase.hold != 0) //hold 출력  
+			BlockController.DrawBlocks(DataBase.hold - 1,530, 95);
 		
 	}
 	public static Random random = new Random();
@@ -33,10 +33,11 @@ public class main {
 	public static void main(String[] args) {
 
 		Function.ZeroSet(); // 맵 초기화 
-		Function.NewBlockSet();
+		//Function.NewBlockSet();
 		BlockController.BlockSet(1);
 
 		Ui ui = new Ui(); // 그래픽창 생성 
+		
 		class key implements KeyListener { //키 입력 
 
 			public void keyPressed(KeyEvent e) {
@@ -46,19 +47,24 @@ public class main {
 					Function.Hold();
 				}
 			}
-
 			public void keyReleased(KeyEvent e) { }
-
 			public void keyTyped(KeyEvent e) { }
 		}
 		Ui.frame.setVisible(true);
 		Ui.frame.addKeyListener(new key());
 		Ui.frame.setFocusable(true);
 		// --------------------------------------------------
-		DataBase.val = (int) main.random.nextInt(7);
-			
 		
-		
+		for (int a = 0 ; a < 4 ;a ++) { // 초기 블럭 세팅 
+			if (a == 0) {
+				DataBase.next[0] = (int) main.random.nextInt(7);
+				continue;
+			}
+			while (DataBase.next[a - 1] == DataBase.next[a] ) { //이전 블럭과 다른 블럭 생성 
+				DataBase.next[a] = (int) main.random.nextInt(7);
+			}
+		}
+		Function.NewBlockSet();
 		while (true) {
 
 			if (DataBase.gameover) { //패배 했다면 
