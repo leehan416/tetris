@@ -21,6 +21,12 @@ public class main {
 				}
 			}
 		}
+		Ui.frame.getGraphics().drawRect(500, 40, 150, 150); // hold 
+		Ui.frame.getGraphics().drawRect(475, 200, 200, 490); // next block 
+		BlockController.NextBlockPrint();
+		if (DataBase.hold != 0)
+		BlockController.DrawBlocks(DataBase.hold - 1,530, 95);
+		
 	}
 	public static Random random = new Random();
 
@@ -28,7 +34,7 @@ public class main {
 
 		Function.ZeroSet(); // 맵 초기화 
 		Function.NewBlockSet();
-		Function.BlockSet();
+		BlockController.BlockSet(1);
 
 		Ui ui = new Ui(); // 그래픽창 생성 
 		class key implements KeyListener { //키 입력 
