@@ -9,4 +9,8 @@ public class DataBase {
 	public static int[][] slot = new int[17][10]; // 17,10맵
 	public static int hold = 0; //블럭 저장하는 함수 
 	public static int[] next = new int[4]; // 다음 블럭 저장 
+	
+	
+	public static int cleared = 0; 
+	
 }

@@ -72,7 +72,8 @@ public class main {
 			} else {
 				print();
 				try { //1 초당 1 프레임 
-					Thread.sleep(1000);
+					int l = DataBase.cleared / 10;
+					Thread.sleep(1000 - l * 100);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
