@@ -1,6 +1,5 @@
 package jav;
 
-import javax.xml.crypto.Data;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
@@ -25,12 +24,16 @@ public class Main {
         BlockController.nextBlockPrint();
         if (DataBase.hold != 0) //hold 출력
             BlockController.drawBlocks(DataBase.hold - 1, 530, 95);
-
     }
 
     public static Random random = new Random();
+    public static Thread[] waitController = new WaitController[2];
 
     public static void main(String[] args) {
+        // thread 초기 설정
+        waitController[0] = new WaitController();
+        waitController[1] = new WaitController();
+        waitController[0].start();
 
         Function.zeroSet(); // 맵 초기화
         //Function.NewBlockSet();
@@ -41,12 +44,18 @@ public class Main {
         class key implements KeyListener { //키 입력
 
             public void keyPressed(KeyEvent e) {
-                Function.moveBlock(e.getKeyCode());
-                print();
-                if ((e.getKeyCode() == 16) && (!Function.ishold)) {
-                    //shift
+
+                waitController[0].interrupt(); // 만약 스레드가 작동중이면 정지
+                if (37 <= e.getKeyCode() && e.getKeyCode() <= 40) // move
+                    Function.moveBlock(e.getKeyCode());
+                else if ((e.getKeyCode() == 16) && (!Function.ishold))//shift
                     Function.holdBlock();
-                }
+                else return;
+                print();
+                DataBase.ableToMove = false;
+                waitController[1].start(); // 스래드 실행
+                waitController[0] = waitController[1]; // 스레드 swap
+                waitController[1] = new WaitController(); // 새로운 스레드 생성 => 이전 thread 사용 불가
             }
 
             public void keyReleased(KeyEvent e) {
@@ -70,10 +79,7 @@ public class Main {
             }
         }
         Function.newBlockSet();
-
-
         while (true) {
-
             if (DataBase.gameOver) { //패배 했다면
                 break; // 그만
             } else {
@@ -85,8 +91,7 @@ public class Main {
                     e.printStackTrace();
                 }
                 print();
-               // while (!DataBase.ableToMove) System.out.println("!"); ;
-
+                while (!DataBase.ableToMove) System.out.print("");
                 Function.downBlock();
             }
         }

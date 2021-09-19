@@ -1,8 +1,8 @@
 package jav;
 
-import javax.xml.crypto.Data;
-
 public class Function {
+
+    //TODO : 상단 하단에서 방향전환시 이동되는 버그 수정 필요
 
     public static boolean ishold = false;
 
@@ -15,19 +15,14 @@ public class Function {
     }
 
     public static void moveBlock(int val) { // 이동 함수
-        String b = "b"; // 예외 발생변수
         boolean three = false; // 블럭 겹침 검사 함수
         movingDel();
-//        if (!DataBase.ableToMove)
-//            DataBase.ableToMove = true;
-
-
         try {
             switch (val) {
                 case 37: { // 왼쪽 키
                     DataBase.ableToMove = false;
                     --DataBase.x;
-                    int value = Integer.parseInt(b); // 예외 발생
+                    int value = Integer.parseInt("b"); // 예외 발생
                     break;
                 }
                 case 38: { // 위쪽 키 => 방향 전환
@@ -36,23 +31,22 @@ public class Function {
                         DataBase.angle++;
                     else
                         DataBase.angle = 0;
-                    int value = Integer.parseInt(b);
+                    int value = Integer.parseInt("b");
                     break;
                 }
                 case 39: { // 오른 쪽
                     DataBase.ableToMove = false;
                     ++DataBase.x;
-                    int value = Integer.parseInt(b);
+                    int value = Integer.parseInt("b");
                     break;
                 }
                 case 40: { // 아래 키
                     ++DataBase.y;
-                    int value = Integer.parseInt(b);
+                    int value = Integer.parseInt("b");
                     break;
                 }
             }
         } catch (Exception e) {
-            //   waitSet();
             try {
                 try {
                     BlockController.blockSet(1); // 블럭 세팅
@@ -77,7 +71,7 @@ public class Function {
                     }
                 }
                 if (three) { // 블럭이 겹쳤으면
-                    int a = Integer.parseInt(b); // 예외 발생
+                    int a = Integer.parseInt("b"); // 예외 발생
                 } else { // 겹친게 아니라면
                     movingDel();
                     BlockController.blockSet(1); // 블럭 세팅
@@ -88,7 +82,7 @@ public class Function {
                     switch (val) {
                         case 37: { // 왼
                             ++DataBase.x;
-                            int a = Integer.parseInt(b);
+                            int a = Integer.parseInt("b");
                             break;
                         }
                         case 38: { // 위
@@ -97,17 +91,17 @@ public class Function {
                             else // 0
                                 DataBase.angle = 4;
 
-                            int a = Integer.parseInt(b);
+                            int a = Integer.parseInt("b");
                             break;
                         }
                         case 39: { // 오른
                             --DataBase.x;
-                            int a = Integer.parseInt(b);
+                            int a = Integer.parseInt("b");
                             break;
                         }
                         case 40: { // 아래
                             --DataBase.y;
-                            int a = Integer.parseInt(b);
+                            int a = Integer.parseInt("b");
                             break;
                         }
                     }
@@ -118,19 +112,6 @@ public class Function {
             }
         }
     }
-
-//    public static void waitSet() {
-//        if (DataBase.ableToMove)
-//            return;
-//        try {
-//            Thread.sleep(500);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//       // DataBase.ableToMove = true;
-//        System.out.println("pass here");
-//    }
-
 
     public static void movingDel() { // 이동을 위해 제거 (1인 데이터 제거)
         for (int y = 0; y < 17; y++) {
